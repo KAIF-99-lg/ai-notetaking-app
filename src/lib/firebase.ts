@@ -22,10 +22,9 @@ if (typeof window !== "undefined") {
   analytics = getAnalytics(app);
 }
 
-export const storage = getStorage(app);
-
 export async function uploadFileToFirebase(image_url: string, name: string) {
   try {
+    const storage = getStorage(app);
     const response = await fetch(image_url);
     const buffer = await response.arrayBuffer();
     const file_name = name.replace(" ", "") + Date.now() + ".jpeg";
