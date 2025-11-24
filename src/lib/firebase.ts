@@ -1,22 +1,21 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "aideation-yt.firebaseapp.com",
-  projectId: "aideation-yt",
-  storageBucket: "aideation-yt.appspot.com",
-  messagingSenderId: "962348384448",
-  appId: "1:962348384448:web:e02758407aba3258d5ad25",
+  apiKey: process.env.FIRE_BASE_API_KEY,
+  authDomain: "noteflow-9008a.firebaseapp.com",
+  projectId: "noteflow-9008a",
+  storageBucket: "noteflow-9008a.firebasestorage.app",
+  messagingSenderId: "288267372512",
+  appId: "1:288267372512:web:2807405f9a36bf6f484d85",
+  measurementId: "G-JG0BQNV7L6"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const storage = getStorage(app);
+const analytics = getAnalytics(app);
 
 export async function uploadFileToFirebase(image_url: string, name: string) {
   try {
