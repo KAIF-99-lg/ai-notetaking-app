@@ -1,6 +1,8 @@
 // /api/createNoteBook
 
 import { db } from "@/lib/db";
+
+export const runtime = 'nodejs';
 import { $notes } from "@/lib/db/schema";
 import { generateImage, generateImagePrompt } from "@/lib/openai";
 import { auth } from "@clerk/nextjs";
