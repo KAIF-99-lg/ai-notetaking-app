@@ -23,11 +23,17 @@ export async function generateImagePrompt(name: string) {
       ],
     });
     const data = await response.json();
+    
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      console.error('Invalid OpenAI response:', data);
+      return `A minimalistic flat-styled illustration representing ${name}`;
+    }
+    
     const image_description = data.choices[0].message.content;
     return image_description as string;
   } catch (error) {
-    console.log(error);
-    throw error;
+    console.log('Error generating image prompt:', error);
+    return `A minimalistic flat-styled illustration representing ${name}`;
   }
 }
 
@@ -39,9 +45,16 @@ export async function generateImage(image_description: string) {
       size: "256x256",
     });
     const data = await response.json();
+    
+    if (!data.data || !data.data[0] || !data.data[0].url) {
+      console.error('Invalid DALL-E response:', data);
+      return null;
+    }
+    
     const image_url = data.data[0].url;
     return image_url as string;
   } catch (error) {
-    console.error(error);
+    console.error('Error generating image:', error);
+    return null;
   }
 }

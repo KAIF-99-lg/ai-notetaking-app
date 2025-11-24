@@ -17,7 +17,7 @@ type Props = {
 };
 
 const NotebookPage = async ({ params: { noteId } }: Props) => {
-  const { userId } = await auth();
+  const { userId } = auth();
   if (!userId) {
     return redirect("/dashboard");
   }
@@ -47,7 +47,7 @@ const NotebookPage = async ({ params: { noteId } }: Props) => {
           </span>
           <span className="inline-block mx-1">/</span>
           <span className="text-stone-500 font-semibold">{note.name}</span>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-2">
             <DeleteButton noteId={note.id} />
           </div>
         </div>
